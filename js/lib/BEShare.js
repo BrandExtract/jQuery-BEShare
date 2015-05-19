@@ -75,13 +75,6 @@
       this.add(services[i]);
     }
 
-    // Open a small window to share.
-    $container.on('click', 'a[class^="' + options.prefix + '"]', function(event) {
-      var href = $(this).attr('href');
-      window.open(href, PLUGIN_NAME, 'toolbar=0,status=0,width='+options.width+',height='+options.height);
-      return false;
-    });
-
     if (options.type === "popup") {
       this.element.on('click.'+PLUGIN_NAME, function(event) {
         // Stop the event from bubbling up to the below handler.
@@ -109,6 +102,7 @@
   };
 
   Plugin.prototype.add = function(serviceName) {
+    var options = this.options;
     var service = SERVICES[serviceName];
     if (!service) {
       // Any string not of a service is output as is.
@@ -116,13 +110,23 @@
       return this;
     }
 
-    var link = template(service, {
+    var url = template(service, {
       url: encodeURIComponent(document.location.href),
       title: encodeURIComponent(document.title),
     });
 
-    var $link = $('<a href="' + link + '" target="_blank"><span>' + serviceName + '</span></a>');
-    $link.addClass(this.options.prefix + serviceName.toLowerCase());
+    var $link = $('<a href="' + url + '"><span>' + serviceName + '</span></a>');
+
+    if (url.indexOf('http') === 0) {
+      // External links
+      $link.attr('target', '_blank');
+      $link.on('click.'+PLUGIN_NAME, function() {
+        window.open(url, PLUGIN_NAME, 'toolbar=0,status=0,width='+options.width+',height='+options.height);
+        return false;
+      });
+    }
+
+    $link.addClass(options.prefix + serviceName.toLowerCase());
     $link.appendTo(this.container);
     return this;
   };
