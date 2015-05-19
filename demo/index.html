@@ -7,14 +7,39 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <h1>Share Popup <small><a href="#" class="icon-share popup"></a></small></h1>
+  <h1>jQuery-BEShare <small><a href="#" class="icon-share popup"></a></small></h1>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, earum excepturi rem nesciunt, ipsam quisquam aliquid. Qui voluptatum cupiditate quaerat quas pariatur quod eum, vel veritatis expedita totam inventore, non deleniti fuga id! Sit atque excepturi quo ipsum, fugit porro reiciendis quod voluptates, expedita hic, perspiciatis accusamus facere corporis eveniet?</p>
+  <p>This is a simple jQuery plugin to add social sharing links to your webpage. It supports two modes, as a popup attached to an anchor link, and inline inside a container.</p>
 
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quas perspiciatis, placeat. Rerum tempora, et aliquid, aliquam quasi iusto. Consequatur inventore optio eaque, at quo illo architecto quae dolore porro.</p>
+  <p>The share icon next to the heading is of popup type. The social icons at the bottom of the page is of inline type.</p>
 
+  <p>Current provides the following social shares:</p>
+  <ul>
+    <li>Facebook</li>
+    <li>Twitter</li>
+    <li>LinkedIn</li>
+    <li>GPlus</li>
+  </ul>
+
+  <p>It also provides Print and Email for convenience.</p>
+
+  <h2>Usage</h2>
+
+  <pre>
+    jQuery('.popup').BEShare({
+      'type': 'popup', // or 'inline'
+      'targets': ['Facebook', 'Twitter', 'LinkedIn', 'GPlus', 'Print', 'Email'],
+      'class': 'BEShare',
+      'prefix': 'icon-',
+      'width': '626',
+      'height': '436',
+      'analytics': ''
+    });
+  </pre>
+
+  <hr />
   <div class="inline-share">
-    <span class="share">Share (inline):</span>
+    <span class="share">Share:</span>
   </div>
 
   <script src="../vendor/jquery-1.11.1.min.js"></script>

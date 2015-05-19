@@ -16,7 +16,7 @@
   var PLUGIN_NAME = 'BEShare';
   var defaults = {
     'type': 'popup',
-    'services': ['Facebook', 'Twitter'],
+    'targets': ['Facebook', 'Twitter'],
     'class': PLUGIN_NAME,
     'prefix': 'icon-',
     'width': '626',
@@ -66,14 +66,14 @@
     this.container = $container;
     $container.addClass(options.class);
 
-    var services = options.services;
-    if ($.type(services) === 'string') {
+    var targets = options.targets;
+    if ($.type(targets) === 'string') {
       // @TODO: Parse string 'ServiceA,ServiceB|ServiceC,ServiceD'
     }
 
-    var i, total = services.length;
+    var i, total = targets.length;
     for (i = 0; i < total; i++) {
-      this.add(services[i]);
+      this.add(targets[i]);
     }
 
     if (options.type === 'popup') {
