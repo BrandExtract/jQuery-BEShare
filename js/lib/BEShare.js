@@ -5,24 +5,12 @@
   var $window = $(window), $document = $(document);
 
   var SERVICES = {
-    'Facebook': {
-      'url': 'https://www.facebook.com/sharer/sharer.php?u={$url}&t={$title}'
-    },
-    'Twitter': {
-      'url': 'https://twitter.com/intent/tweet?text={$title}&url={$url}'
-    },
-    'LinkedIn': {
-      'url': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}'
-    },
-    'GPlus': {
-      'url': 'https://plus.google.com/share?url={$url}'
-    },
-    'Print': {
-      'url': 'javascript:window.print()'
-    },
-    'Email': {
-      'url': 'mailto:?subject={$title}&body={$url}'
-    }
+    'Facebook': 'https://www.facebook.com/sharer/sharer.php?u={$url}&t={$title}',
+    'Twitter': 'https://twitter.com/intent/tweet?text={$title}&url={$url}',
+    'LinkedIn': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}',
+    'GPlus': 'https://plus.google.com/share?url={$url}',
+    'Print': 'javascript:window.print()',
+    'Email': 'mailto:?subject={$title}&body={$url}'
   };
 
   var PLUGIN_NAME = 'BEShare';
@@ -122,8 +110,13 @@
 
   Plugin.prototype.add = function(serviceName) {
     var service = SERVICES[serviceName];
+    if (!service) {
+      // Any string not of a service is output as is.
+      this.container.append(serviceName);
+      return this;
+    }
 
-    var link = template(service.url, {
+    var link = template(service, {
       url: encodeURIComponent(document.location.href),
       title: encodeURIComponent(document.title),
     });
@@ -131,6 +124,7 @@
     var $link = $('<a href="' + link + '" target="_blank"><span>' + serviceName + '</span></a>');
     $link.addClass(this.options.prefix + serviceName.toLowerCase());
     $link.appendTo(this.container);
+    return this;
   };
 
   $.fn[PLUGIN_NAME] = function(options) {
