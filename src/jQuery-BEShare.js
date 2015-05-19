@@ -76,7 +76,7 @@
       this.add(services[i]);
     }
 
-    if (options.type === "popup") {
+    if (options.type === 'popup') {
       this.element.on('click.'+PLUGIN_NAME, function(event) {
         // Stop the event from bubbling up to the below handler.
         event.stopPropagation();
@@ -117,6 +117,7 @@
     });
 
     var $link = $('<a href="' + url + '"><span>' + serviceName + '</span></a>');
+    $link.attr('title', 'Share this page on ' + serviceName);
 
     if (url.indexOf('http') === 0) {
       // External links
