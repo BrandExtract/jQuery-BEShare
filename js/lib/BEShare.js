@@ -20,7 +20,8 @@
     'class': PLUGIN_NAME,
     'prefix': 'icon-',
     'width': '626',
-    'height': '436'
+    'height': '436',
+    'analytics': ''
   };
 
   // Mini template engine.
@@ -122,6 +123,11 @@
       $link.attr('target', '_blank');
       $link.on('click.'+PLUGIN_NAME, function() {
         window.open(url, PLUGIN_NAME, 'toolbar=0,status=0,width='+options.width+',height='+options.height);
+
+        if (options.analytics) {
+          // Fire Google Analytics event
+          ga('send', 'event', 'Social', 'Click', 'Share', serviceName);
+        }
         return false;
       });
     }
