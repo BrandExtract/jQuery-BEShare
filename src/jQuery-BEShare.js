@@ -4,7 +4,7 @@
 
   var $window = $(window), $document = $(document);
 
-  var SERVICES = {
+  var TARGETS = {
     'Facebook': 'https://www.facebook.com/sharer/sharer.php?u={$url}&t={$title}',
     'Twitter': 'https://twitter.com/intent/tweet?text={$title}&url={$url}',
     'LinkedIn': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}',
@@ -21,7 +21,7 @@
     'prefix': 'icon-',
     'width': '626',
     'height': '436',
-    'analytics': ''
+    'onShare': null
   };
 
   // Mini template engine.
@@ -64,7 +64,7 @@
       move($container);
     }
     this.container = $container;
-    $container.addClass(options.class);
+    $container.addClass(options['class']);
 
     var targets = options.targets;
     if ($.type(targets) === 'string') {
@@ -92,7 +92,7 @@
 
       // Clicking anywhere outside will close the popup.
       $document.on('click.'+PLUGIN_NAME, function(event) { 
-        if(!$(event.target).closest('.'+options.class).length) {
+        if(!$(event.target).closest('.'+options['class']).length) {
           if ($container.hasClass('active')) {
             $container.removeClass('active');
             move($container);
@@ -102,22 +102,22 @@
     }
   };
 
-  Plugin.prototype.add = function(serviceName) {
+  Plugin.prototype.add = function(targetName) {
     var options = this.options;
-    var service = SERVICES[serviceName];
-    if (!service) {
-      // Any string not of a service is output as is.
-      this.container.append(serviceName);
+    var target = TARGETS[targetName];
+    if (!target) {
+      // Any string not of a target is output as is.
+      this.container.append(targetName);
       return this;
     }
 
-    var url = template(service, {
+    var url = template(target, {
       url: encodeURIComponent(document.location.href),
       title: encodeURIComponent(document.title),
     });
 
-    var $link = $('<a href="' + url + '"><span>' + serviceName + '</span></a>');
-    $link.attr('title', 'Share this page on ' + serviceName);
+    var $link = $('<a href="' + url + '"><span>' + targetName + '</span></a>');
+    $link.attr('title', 'Share this page on ' + targetName);
 
     if (url.indexOf('http') === 0) {
       // External links
@@ -125,15 +125,14 @@
       $link.on('click.'+PLUGIN_NAME, function() {
         window.open(url, PLUGIN_NAME, 'toolbar=0,status=0,width='+options.width+',height='+options.height);
 
-        if (options.analytics) {
-          // Fire Google Analytics event
-          ga('send', 'event', 'Social', 'Click', 'Share', serviceName);
+        if (options.onShare) {
+          options.onShare(targetName);
         }
         return false;
       });
     }
 
-    $link.addClass(options.prefix + serviceName.toLowerCase());
+    $link.addClass(options.prefix + targetName.toLowerCase());
     $link.appendTo(this.container);
     return this;
   };

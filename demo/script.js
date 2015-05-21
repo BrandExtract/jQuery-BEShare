@@ -9,6 +9,8 @@ jQuery(function($) {
   $('.inline-share').BEShare({
     'type': 'inline',
     'targets': targets.concat(['|', 'Print', 'Email']),
-    'analytics': 'UA-000000-1'
+    'onShare': function(targetName) {
+      ga('send', 'event', 'Social', 'Click', 'Share', targetName);
+    }
   });
 });
