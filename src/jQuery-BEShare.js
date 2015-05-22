@@ -82,10 +82,7 @@
         // Stop the event from bubbling up to the below handler.
         event.stopPropagation();
 
-        var position = {
-          'top': event.pageY - $window.scrollTop(),
-          'left': event.pageX - $window.scrollLeft()
-        };
+        var position = $(this).offset();
 
         move($container, position);
         $container.addClass('active');
