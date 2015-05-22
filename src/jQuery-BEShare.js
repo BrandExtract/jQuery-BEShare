@@ -19,6 +19,7 @@
     'targets': ['Facebook', 'Twitter'],
     'class': PLUGIN_NAME,
     'prefix': 'icon-',
+    'suffix': '',
     'width': '626',
     'height': '436',
     'onShare': null
@@ -132,7 +133,7 @@
       });
     }
 
-    $link.addClass(options.prefix + targetName.toLowerCase());
+    $link.addClass(options.prefix + targetName.toLowerCase() + options.suffix);
     $link.appendTo(this.container);
     return this;
   };
