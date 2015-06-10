@@ -1,3 +1,5 @@
+/* jshint browser:true,jquery:true */
+
 ;(function($, window, document, undefined) {
   "use strict";
   /*jshint scripturl:true, -W084*/
@@ -8,7 +10,8 @@
     'Facebook': 'https://www.facebook.com/sharer/sharer.php?u={$url}&t={$title}',
     'Twitter': 'https://twitter.com/intent/tweet?text={$title}&url={$url}',
     'LinkedIn': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}',
-    'GPlus': 'https://plus.google.com/share?url={$url}',
+    'Google+': 'https://plus.google.com/share?url={$url}',
+    'OilPro': 'http://oilpro.com/links/submit?url={$url}&title={&title}',
     'Print': 'javascript:window.print()',
     'Email': 'mailto:?subject={$title}&body={$url}'
   };
@@ -130,7 +133,7 @@
       });
     }
 
-    $link.addClass(options.prefix + targetName.toLowerCase() + options.suffix);
+    $link.addClass(options.prefix + targetName.toLowerCase().replace('+','plus') + options.suffix);
     $link.appendTo(this.container);
     return this;
   };
