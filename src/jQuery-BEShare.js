@@ -11,7 +11,7 @@
     'Twitter': 'https://twitter.com/intent/tweet?text={$title}&url={$url}',
     'LinkedIn': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}',
     'Google+': 'https://plus.google.com/share?url={$url}',
-    'OilPro': 'http://oilpro.com/links/submit?url={$url}&title={&title}',
+    'OilPro': 'http://oilpro.com/links/submit?url={$url}',
     'Print': 'javascript:window.print()',
     'Email': 'mailto:?subject={$title}&body={$url}'
   };
