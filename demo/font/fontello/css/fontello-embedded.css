@@ -53,7 +53,7 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 .icon-facebook:before { content: '\e800'; } /* '' */
-.icon-gplus:before { content: '\e801'; } /* '' */
+.icon-googleplus:before { content: '\e801'; } /* '' */
 .icon-twitter:before { content: '\e802'; } /* '' */
 .icon-email:before { content: '\e803'; } /* '' */
 .icon-print:before { content: '\e804'; } /* '' */
