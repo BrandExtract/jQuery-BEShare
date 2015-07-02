@@ -8,7 +8,7 @@
 
   var TARGETS = {
     'Facebook': 'https://www.facebook.com/sharer/sharer.php?u={$url}&t={$title}',
-    'Twitter': 'https://twitter.com/intent/tweet?text={$title}&url={$url}',
+    'Twitter': 'https://twitter.com/intent/tweet?text={$title}&url={$url}&via={$via}',
     'LinkedIn': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}',
     'Google+': 'https://plus.google.com/share?url={$url}',
     'OilPro': 'http://oilpro.com/links/submit?url={$url}',
@@ -25,6 +25,7 @@
     'suffix': '',
     'width': '626',
     'height': '436',
+    'via': '',
     'onShare': null
   };
 
@@ -115,6 +116,7 @@
     var url = template(target, {
       url: encodeURIComponent(document.location.href),
       title: encodeURIComponent(document.title),
+      via: encodeURIComponent(options.via)
     });
 
     var $link = $('<a href="' + url + '"><span>' + targetName + '</span></a>');

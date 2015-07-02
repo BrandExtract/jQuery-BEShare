@@ -18,7 +18,7 @@
     <li>Facebook</li>
     <li>Twitter</li>
     <li>LinkedIn</li>
-    <li>GPlus</li>
+    <li>Google+</li>
   </ul>
 
   <p>It also provides Print and Email for convenience.</p>
@@ -28,11 +28,12 @@
   <pre>
     jQuery('.popup').BEShare({
       'type': 'popup', // or 'inline'
-      'targets': ['Facebook', 'Twitter', 'LinkedIn', 'GPlus', 'Print', 'Email'],
+      'targets': ['Facebook', 'Twitter', 'LinkedIn', 'Google+', 'Print', 'Email'],
       'class': 'BEShare',
       'prefix': 'icon-',
       'width': '626',
       'height': '436',
+      'via': 'BrandExtract', // A username associated with the shared content, usually for Twitter
       'onShare': null
     });
   </pre>
