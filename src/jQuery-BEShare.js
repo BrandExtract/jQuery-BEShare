@@ -26,7 +26,8 @@
     'width': '626',
     'height': '436',
     'via': '',
-    'onShare': null
+    'onShare': null,
+    'altLink': null
   };
 
   // Mini template engine.
@@ -113,8 +114,13 @@
       return this;
     }
 
+    var builtUrl = document.location.href;
+    if(options.altLink) {
+      builtUrl = builtUrl + "/" + this.element.attr('rel')
+    }
+
     var url = template(target, {
-      url: encodeURIComponent(document.location.href),
+      url: encodeURIComponent(builtUrl),
       title: encodeURIComponent(document.title),
       via: encodeURIComponent(options.via)
     });
