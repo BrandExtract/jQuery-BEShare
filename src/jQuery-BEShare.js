@@ -116,7 +116,7 @@
 
     var builtUrl = document.location.href;
     if(options.altLink) {
-      builtUrl = builtUrl + "/" + this.element.attr('rel')
+      builtUrl = builtUrl + "/" + this.element.attr('rel');
     }
 
     var url = template(target, {
@@ -126,7 +126,18 @@
     });
 
     var $link = $('<a href="' + url + '"><span>' + targetName + '</span></a>');
-    $link.attr('title', 'Share this page on ' + targetName);
+    
+    switch (targetName) {
+      case 'Print':
+        $link.attr('title', 'Print this page');    
+        break;
+      case 'Email':
+        $link.attr('title', 'Share this page via Email');
+        break;
+      default:
+        $link.attr('title', 'Share this page on ' + targetName);      
+        break;
+    }
 
     if (url.indexOf('http') === 0) {
       // External links
