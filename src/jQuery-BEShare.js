@@ -91,6 +91,7 @@
 
         move($container, position);
         $container.addClass('active');
+        return false;
       });
 
       // Clicking anywhere outside will close the popup.
@@ -114,9 +115,10 @@
       return this;
     }
 
-    var builtUrl = document.location.href;
+    var builtUrl = this.element.attr('href') || document.location.href;
+
     if(options.altLink) {
-      builtUrl = builtUrl + "/" + this.element.attr('rel');
+      builtUrl = builtUrl + "/" + (this.element.attr('rel') || '');
     }
 
     var url = template(target, {
