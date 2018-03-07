@@ -1,6 +1,6 @@
 {
   "name": "@brandextract/jQuery-BEShare",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple share tool from BrandExtract",
   "main": "index.js",
   "scripts": {
