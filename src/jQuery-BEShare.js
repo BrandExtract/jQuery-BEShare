@@ -23,6 +23,7 @@
     'class': PLUGIN_NAME,
     'prefix': 'icon-',
     'suffix': '',
+    'aria-prefix': 'Share on ',
     'width': '626',
     'height': '436',
     'via': '',
@@ -155,6 +156,7 @@
     }
 
     $link.addClass(options.prefix + targetName.toLowerCase().replace('+','plus') + options.suffix);
+    $link.attr('aria-label', options["aria-prefix"] + targetName.toLowerCase().replace('+','plus'));
     $link.appendTo(this.container);
     return this;
   };
