@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/sntran/jQuery-BEShare.git"
+    "url": "https://github.com/BrandExtract/jQuery-BEShare.git"
   },
-  "author": "Son Tran-Nguyen <son@brandextract.com>",
+  "author": "BrandExtract",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sntran/jQuery-BEShare/issues"
   },
-  "homepage": "https://github.com/sntran/jQuery-BEShare",
+  "homepage": "https://github.com/BrandExtract/jQuery-BEShare",
   "devDependencies": {
     "gulp": "^3.8.11",
     "gulp-jshint": "^1.10.0",
