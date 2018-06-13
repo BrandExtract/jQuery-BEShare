@@ -26,6 +26,7 @@
     'aria-prefix': 'Share on ',
     'width': '626',
     'height': '436',
+    'message': document.title,
     'via': '',
     'onShare': null,
     'altLink': null
@@ -42,7 +43,7 @@
 
   function move($element, offset) {
     if (!offset) {
-      offset = { 
+      offset = {
         'top': '-9999px',
         'left': '-9999px'
       };
@@ -53,7 +54,7 @@
   function Plugin(element, options) {
     this.element = $(element);
     this.options = $.extend({}, defaults, options);
-    
+
     this._name = PLUGIN_NAME;
     this.init();
   }
@@ -96,7 +97,7 @@
       });
 
       // Clicking anywhere outside will close the popup.
-      $document.on('click.'+PLUGIN_NAME, function(event) { 
+      $document.on('click.'+PLUGIN_NAME, function(event) {
         if(!$(event.target).closest('.'+options['class']).length) {
           if ($container.hasClass('active')) {
             $container.removeClass('active');
@@ -124,21 +125,21 @@
 
     var url = template(target, {
       url: encodeURIComponent(builtUrl),
-      title: encodeURIComponent(document.title),
+      title: encodeURIComponent(options.message),
       via: encodeURIComponent(options.via)
     });
 
     var $link = $('<a href="' + url + '"><span>' + targetName + '</span></a>');
-    
+
     switch (targetName) {
       case 'Print':
-        $link.attr('title', 'Print this page');    
+        $link.attr('title', 'Print this page');
         break;
       case 'Email':
         $link.attr('title', 'Share this page via Email');
         break;
       default:
-        $link.attr('title', 'Share this page on ' + targetName);      
+        $link.attr('title', 'Share this page on ' + targetName);
         break;
     }
 
@@ -164,7 +165,7 @@
   $.fn[PLUGIN_NAME] = function(options) {
     return this.each(function() {
       if (!$.data(this, 'plugin_' + PLUGIN_NAME)) {
-        $.data(this, 'plugin_' + PLUGIN_NAME, 
+        $.data(this, 'plugin_' + PLUGIN_NAME,
         new Plugin( this, options ));
       }
     });
