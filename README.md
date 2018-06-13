@@ -16,18 +16,18 @@ It also provides Print and Email for convenience.
 ## Usage ##
 ```javascript
 jQuery('.popup').BEShare({
-  'type': 'popup', // or 'inline'
-  'targets': ['Facebook', 'Twitter'], // also 'LinkedIn', 'Google+', 'Print', 'Email'
-  'class': '', // Class to add to the container
-  'prefix': 'icon-', // add prefix to icon class
-  'suffix': '',  // add suffix to icon class
-  'aria-prefix': 'Share on ',
-  'width': '626',
-  'height': '436',
-  'message': document.title,
-  'via': '', // A username associated with the shared content, usually for Twitter
-  'onShare': null,  // A function to run when share button is clicked
-  'altLink': null  // To share as a different url than the page you are on
+  'type': 'popup', // string - also accepts 'inline'
+  'targets': ['Facebook', 'Twitter'], // array - also accepts 'LinkedIn', 'Google+', 'Print', 'Email'
+  'class': '', // string - Class to add to the container
+  'prefix': 'icon-', // string - add prefix to icon class
+  'suffix': '',  // string - add suffix to icon class
+  'aria-prefix': 'Share on ',  // adds aria-label parameter to link
+  'width': '626', // string - width of the popup
+  'height': '436', // string - height of the popup
+  'message': document.title, // string - message to share with link
+  'via': '', // string - username associated with the shared content, usually for Twitter
+  'onShare': null,  // function - to run when share button is clicked
+  'altLink': null  // boolean - to use "rel" parameter as the url to share
 });
 ```
 
