@@ -17,17 +17,17 @@ It also provides Print and Email for convenience.
 ```javascript
 jQuery('.popup').BEShare({
   'type': 'popup', // or 'inline'
-  'targets': ['Facebook', 'Twitter'], // and/or 'LinkedIn', 'Google+', 'Print', 'Email'
-  'class': 'BEShare',
-  'prefix': 'icon-',
-  'suffix': '-v2',
+  'targets': ['Facebook', 'Twitter'], // also 'LinkedIn', 'Google+', 'Print', 'Email'
+  'class': '', // Class to add to the container
+  'prefix': 'icon-', // add prefix to icon class
+  'suffix': '',  // add suffix to icon class
   'aria-prefix': 'Share on ',
   'width': '626',
   'height': '436',
   'message': document.title,
-  'via': 'BrandExtract', // A username associated with the shared content, usually for Twitter
+  'via': '', // A username associated with the shared content, usually for Twitter
   'onShare': null,  // A function to run when share button is clicked
-  'altLink': null  // To share as a different link than the page you are on, for example: permlinks or canonical
+  'altLink': null  // To share as a different url than the page you are on
 });
 ```
 
