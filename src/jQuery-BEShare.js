@@ -12,7 +12,8 @@
     'LinkedIn': 'https://www.linkedin.com/shareArticle?mini=true&url={$url}&title={$title}',
     'Google+': 'https://plus.google.com/share?url={$url}',
     'Print': 'javascript:window.print()',
-    'Email': 'mailto:?subject={$title}&body={$url}'
+    'Email': 'mailto:?subject={$title}&body={$url}',
+    'SMS': 'sms:?subject={$title}%20:%20{$url}'
   };
 
   var PLUGIN_NAME = 'BEShare';
