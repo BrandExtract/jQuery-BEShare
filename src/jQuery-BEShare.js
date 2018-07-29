@@ -29,7 +29,8 @@
     'message': document.title,
     'via': '',
     'onShare': null,
-    'altLink': null
+    'altLink': null,
+    'removeHash': false
   };
 
   // Mini template engine.
@@ -118,6 +119,10 @@
     }
 
     var builtUrl = this.element.attr('href') || document.location.href;
+
+    if(options.removeHash) {
+      builtUrl = builtUrl.split("#")[0]
+    }
 
     if(options.altLink) {
       builtUrl = builtUrl + "/" + (this.element.attr('rel') || '');

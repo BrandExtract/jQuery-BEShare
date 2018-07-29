@@ -17,7 +17,7 @@ It also provides Print and Email for convenience.
 ```javascript
 jQuery('.popup').BEShare({
   'type': 'popup', // string - also accepts 'inline'
-  'targets': ['Facebook', 'Twitter'], // array - also accepts 'LinkedIn', 'Google+', 'Print', 'Email'
+  'targets': ['Facebook', 'Twitter'], // array - also accepts 'LinkedIn', 'Google+', 'Print', 'Email', 'SMS'
   'class': '', // string - Class to add to the container
   'prefix': 'icon-', // string - add prefix to icon class
   'suffix': '',  // string - add suffix to icon class
@@ -28,6 +28,7 @@ jQuery('.popup').BEShare({
   'via': '', // string - username associated with the shared content, usually for Twitter
   'onShare': null,  // function - to run when share button is clicked
   'altLink': null  // boolean - to use "rel" parameter as the url to share
+  'removeHash': false // boolean - removes the hash part of the URL
 });
 ```
 
