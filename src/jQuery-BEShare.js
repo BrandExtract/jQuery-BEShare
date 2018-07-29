@@ -13,7 +13,7 @@
     'Google+': 'https://plus.google.com/share?url={$url}',
     'Print': 'javascript:window.print()',
     'Email': 'mailto:?subject={$title}&body={$url}',
-    'SMS': 'sms:?subject={$title}%20:%20{$url}'
+    'SMS': 'sms://?&body={$title}%20-%20{$url}'
   };
 
   var PLUGIN_NAME = 'BEShare';
